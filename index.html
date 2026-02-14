@@ -235,12 +235,10 @@
         .cta2 {
             background: linear-gradient(135deg, #adb5bd 0%, #6c757d 100%);
             color: white;
-            position: absolute;
+            position: relative;
             transition: all 0.2s ease;
             border: 3px solid #fff;
-            right: 15%;
-            top: 50%;
-            transform: translateY(-50%);
+            z-index: 5;
         }
 
         /* Modal styles */
@@ -562,6 +560,11 @@
 
         // Function to move the No button
         function moveNoButton() {
+            // Make button absolutely positioned on first move
+            if (noButtonMoveCount === 0) {
+                cta2.style.position = 'absolute';
+            }
+            
             noButtonMoveCount++;
             
             const containerRect = ctaContainer.getBoundingClientRect();
